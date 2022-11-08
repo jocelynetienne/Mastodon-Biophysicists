@@ -146,16 +146,26 @@ function buildUserSelectionForm (users) {
    // Name as clickable link to profile
    const bracketOpen = document.createTextNode(" (")
    const bracketClose = document.createTextNode(") ")
+   const coma = document.createTextNode(", ")
    wrapper.appendChild(bracketOpen)
+   theusername = "link to profile"
+   if ('name' in user) {
+      theusername = user.name
+    }
    if ('link' in user && user.link.trim() !== '') {
      const nameAsLink = document.createElement('a')
-     nameAsLink.textContent = user.name
+     nameAsLink.textContent = theusername
      nameAsLink.setAttribute('href', user.link)
      nameAsLink.setAttribute('target', 'blank')
      wrapper.appendChild(nameAsLink)
    } else {
-     const nameWithoutLink = document.createTextNode(user.name)
+     const nameWithoutLink = document.createTextNode(theusername)
      wrapper.appendChild(nameWithoutLink)
+   }
+   if ('affiliation' in user) {
+     wrapper.appendChild(coma)
+     const affiliation = document.createTextNode(user.affiliation)
+     wrapper.appendChild(affiliation)
    }
    wrapper.appendChild(bracketClose)
 
