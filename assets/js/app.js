@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded', function () {
  */
 async function getCSVData () {
   // Fetch the CSV file
-  const response = await fetch('resources/users.csv')
+  const response = await fetch('resources/biophysicists_on_mastodon.csv')
   // Retrieve the file contents as plain text
   const data = await response.text()
   // Parse them into a multi-dimensional array of objects. In our case:
